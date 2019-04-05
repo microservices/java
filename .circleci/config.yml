@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    working_directory: ~/omg
+
+    steps:
+      - checkout
+      - run:
+          name: Install node@11.6.0
+          command: |
+            set +e
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+            export NVM_DIR="/opt/circleci/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install v10.14.1 && nvm alias default v10.14.1
+            # Each step uses the same `$BASH_ENV`, so need to modify it
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
+
+      - run:
+          name: Install OMG
+          command: npm i omg
+      - run:
+          name: Building the OMG service
+          command: npx omg build
+      - run:
+          name: Test output
+          command: |
+            output="$(npx omg run --raw message -a name="Peter")"
+            if [ "$output" != '{"message":"Hello Peter"}' ] ; then echo "$output"; exit 1; fi
