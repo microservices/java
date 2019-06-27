@@ -9,6 +9,10 @@ info:
 lifecycle:
   startup:
     command: ["java", "-jar", "/app/omg-template-java.jar"]
+health:
+  http:
+    path: /health
+    port: 8080
 actions:
   message:
     http:
