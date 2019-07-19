@@ -9,6 +9,10 @@ info:
 lifecycle:
   startup:
     command: ["java", "-jar", "/app/omg-template-java.jar"]
+health:
+  http:
+    path: /health
+    port: 8080
 actions:
   message:
     http:
@@ -21,5 +25,8 @@ actions:
         required: true
         in: requestBody
     output:
-      type: any
       contentType: application/json
+      type: object
+      properties:
+        message:
+          type: string
