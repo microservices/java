@@ -6,10 +6,10 @@
     <groupId>org.microservices.java</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <artifactId>omg-template-java</artifactId>
-    <name>omg-template-java</name>
+    <artifactId>oms-template-java</artifactId>
+    <name>oms-template-java</name>
 
-    <description>OMG microservice template for Java.</description>
+    <description>OMS microservice template for Java.</description>
 
     <dependencyManagement>
         <dependencies>
