@@ -10,6 +10,6 @@ RUN			mvn package
 
 FROM        java:8-jre-alpine
 WORKDIR		/app
-COPY 		--from=builder /java/target/omg-template-java.jar .
-COPY 		--from=builder /java/target/omg-template-java.lib omg-template-java.lib
-ENTRYPOINT  ["java", "-jar", "/app/omg-template-java.jar"]
+COPY 		--from=builder /java/target/oms-template-java.jar .
+COPY 		--from=builder /java/target/oms-template-java.lib oms-template-java.lib
+ENTRYPOINT  ["java", "-jar", "/app/oms-template-java.jar"]

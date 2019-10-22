@@ -1,4 +1,4 @@
-omg: 1
+oms: 1
 info:
   version: 1.0.0
   title: Your microservice
@@ -8,7 +8,7 @@ info:
     url: https://opensource.org/licenses/Apache-2.0
 lifecycle:
   startup:
-    command: ["java", "-jar", "/app/omg-template-java.jar"]
+    command: ["java", "-jar", "/app/oms-template-java.jar"]
 health:
   http:
     path: /health
